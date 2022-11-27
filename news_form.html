@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>News</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<nav>
+		<ul>
+		<li><a href="">Create News</a></li>
+		<li><a href="readnews.php">News</a></li>
+		</ul>
+	</nav>
+	<form action="writedb.php" target="_self" method="post">
+		<label for="author">Author name:</label>
+		<input type="text" name="author"><br><br>
+		<label for="title">Title of news:</label>
+		<input type="text" name="title"><br><br>
+		<label for="text">Text news:</label>
+		<textarea name="text" cols="60" rows="30"></textarea><br><br>
+		<input type="submit" value="Submit">
+	</form>
+</body>
+</html>
