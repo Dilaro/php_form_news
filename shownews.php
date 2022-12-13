@@ -6,33 +6,25 @@
   <title>Document</title>
 </head>
 <body>
-  <?php
-  $servername = "localhost";
-  $username = "admin";
-  $password = "admin";
-  $dbname = "newsForm";
-  $dbtable = "news";
+    <?php
+    require 'conntodb.php';
 
-  $conn = new mysqli($servername, $username, $password, $dbname);
+    connectDb();
+    global $conn, $dbtable;
 
-  if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-  }
-  
-  $sql = "SELECT news_title, news_text, username FROM $dbtable";
-  $result = $conn->query($sql);
+    $sql = "SELECT news_title, news_text, username FROM $dbtable";
+    $result = $conn->query($sql);
 
-
-  if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-      echo "<h3>" . $row["news_title"] . "</h3><br>" .
-            "<p>" . $row["news_text"] . "</p><br><br>" . 
-            "Author: <b>" . $row["username"] . "</b><br><br><br>" .
-            "<hr>";
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            echo "<h3>" . $row["news_title"] . "</h3><br>" .
+                "<p>" . $row["news_text"] . "</p><br><br>" .
+                "Author: <b>" . $row["username"] . "</b><br><br><br>" .
+                "<hr>";
+        }
     }
-  }
 
-  $conn->close();
-  ?>
+    connectClose();
+    ?>
 </body>
 </html>

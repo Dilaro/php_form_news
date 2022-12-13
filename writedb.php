@@ -14,26 +14,15 @@
 		</ul>
 	</nav>
 	<?php
-	include_once 'createdb.php';
-	include_once 'createtable.php';
+    require 'conntodb.php';
+
+    connectDb();
+    global $conn, $dbtable;
 
 	if (isset($_POST['author']) && isset($_POST['title']) && isset($_POST['text'])) {
-
 		$author = $_POST['author'];
 		$title = $_POST['title'];
 		$text = $_POST['text'];
-
-		$servername = "localhost";
-		$username = "admin";
-		$password = "admin";
-		$dbname = "newsForm";
-		$dbtable = "news";
-
-		$conn = new mysqli($servername, $username, $password, $dbname);
-
-		if ($conn->connect_error) {
-			die("Connection failed: " . $conn->connect_error);
-		}
 
 		$sql = "INSERT INTO $dbtable (news_title, news_text, username) VALUES ('{$title}', '{$text}', '{$author}')";
 
@@ -44,7 +33,7 @@
 		}
 	}
 
-	$conn->close();
+    connectClose();
 	?>
 </body>
 </html>

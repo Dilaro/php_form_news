@@ -6,20 +6,14 @@
 	<title></title>
 </head>
 <body>
-	<?php 
-	$servername = "localhost";
-	$username = "admin";
-	$password = "admin";
+	<?php
+    require 'conntodb.php';
 
-	$conn = new mysqli($servername, $username, $password);
+    connectDb();
 
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
+    $sql = "CREATE DATABASE newsForm";
 
-	$sql = "CREATE DATABASE newsForm";
-
-	$conn->close();
+    connectClose();
 	?>
 </body>
 </html>

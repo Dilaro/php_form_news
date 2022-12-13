@@ -7,17 +7,10 @@
 </head>
 <body>
 	<?php
-	$servername = "localhost";
-	$username = "admin";
-	$password = "admin";
-	$dbname = "newsForm";
+    require 'conntodb.php';
 
-	$conn = new mysqli($servername, $username, $password, $dbname);
+    connectDb();
 
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
-	
 	$sql = "CREATE TABLE news (
 	id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	news_title VARCHAR(30),
@@ -25,7 +18,7 @@
 	username VARCHAR(20)
 	)";
 
-	$conn->close();
+    connectClose();
 	?>
 </body>
 </html>
